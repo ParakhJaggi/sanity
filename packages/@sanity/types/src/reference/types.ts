@@ -48,6 +48,18 @@ export type ReferenceFilterResolver = (
 ) => ReferenceFilterSearchOptions | Promise<ReferenceFilterSearchOptions>
 
 /** @public */
+export interface ReferenceTypeFilterContext {
+  document: SanityDocument
+  parent?: Record<string, unknown> | Record<string, unknown>[]
+  parentPath: Path
+  /** Array of type names available for this reference field (from schema `to`) */
+  availableTypes: string[]
+}
+
+/** @public */
+export type ReferenceTypeFilter = (context: ReferenceTypeFilterContext) => string[]
+
+/** @public */
 export interface ReferenceFilterResolverOptions {
   filter?: ReferenceFilterResolver
   filterParams?: never
@@ -62,6 +74,12 @@ export interface ReferenceFilterQueryOptions {
 /** @public */
 export interface ReferenceBaseOptions extends BaseSchemaTypeOptions {
   disableNew?: boolean
+  /**
+   * Function to filter which types appear in the "Create new" type picker.
+   * Receives document context and returns array of allowed type names.
+   * Only affects the Create picker - search/browse remain unchanged.
+   */
+  filterTypes?: ReferenceTypeFilter
 }
 
 /** @public */
