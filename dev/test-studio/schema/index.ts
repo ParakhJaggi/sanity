@@ -131,6 +131,7 @@ import simpleBlockNote from './standard/portableText/simpleBlockNote'
 import simpleBlockNoteBody from './standard/portableText/simpleBlockNoteBody'
 import simpleBlockNoteUrl from './standard/portableText/simpleBlockNoteUrl'
 import spotifyEmbed from './standard/portableText/spotifyEmbed'
+import {conditionalReferenceTypes} from './standard/conditionalReferenceTypes'
 import references, {referenceAlias} from './standard/references'
 import slugs, {slugAlias} from './standard/slugs'
 import strings from './standard/strings'
@@ -202,6 +203,7 @@ export function createSchemaTypes(projectId: string) {
     simpleBlockNoteBody,
     simpleBlockNoteUrl,
     spotifyEmbed,
+    ...conditionalReferenceTypes,
     references,
     referenceAlias,
     slugs,
