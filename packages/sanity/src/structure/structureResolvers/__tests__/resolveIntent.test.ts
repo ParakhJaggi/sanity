@@ -403,11 +403,11 @@ describe('resolveIntent', () => {
         structureContext: S.context,
       })
 
-      // Should have split panes with both views
+      // Should have split panes with both views, first pane has expanded: 'true'
       expect(routerPanes).toEqual([
         [{id: 'author'}],
         [
-          {id: 'author123', params: {view: 'editor'}, payload: undefined},
+          {id: 'author123', params: {view: 'editor', expanded: 'true'}, payload: undefined},
           {id: 'author123', params: {view: 'preview'}, payload: undefined},
         ],
       ])
@@ -484,11 +484,11 @@ describe('resolveIntent', () => {
         structureContext: S.context,
       })
 
-      // Should create split panes with only valid view IDs
+      // Should create split panes with only valid view IDs, first pane has expanded: 'true'
       expect(routerPanes).toEqual([
         [{id: 'author'}],
         [
-          {id: 'author123', params: {view: 'editor'}, payload: undefined},
+          {id: 'author123', params: {view: 'editor', expanded: 'true'}, payload: undefined},
           {id: 'author123', params: {view: 'preview'}, payload: undefined},
         ],
       ])
@@ -604,11 +604,11 @@ describe('resolveIntent', () => {
         structureContext: S.context,
       })
 
-      // Should have 3 split panes
+      // Should have 3 split panes, first pane has expanded: 'true'
       expect(routerPanes).toEqual([
         [{id: 'author'}],
         [
-          {id: 'author123', params: {view: 'editor'}, payload: undefined},
+          {id: 'author123', params: {view: 'editor', expanded: 'true'}, payload: undefined},
           {id: 'author123', params: {view: 'preview'}, payload: undefined},
           {id: 'author123', params: {view: 'json'}, payload: undefined},
         ],
@@ -650,10 +650,11 @@ describe('resolveIntent', () => {
         structureContext: S.context,
       })
 
+      // First pane in defaultPanes order has expanded: 'true'
       expect(routerPanes).toEqual([
         [{id: 'author'}],
         [
-          {id: 'author123', params: {view: 'preview'}, payload: undefined},
+          {id: 'author123', params: {view: 'preview', expanded: 'true'}, payload: undefined},
           {id: 'author123', params: {view: 'editor'}, payload: undefined},
         ],
       ])
@@ -732,11 +733,15 @@ describe('resolveIntent', () => {
         structureContext: S.context,
       })
 
-      // Should preserve 'inspect' param in all split panes
+      // Should preserve 'inspect' param in all split panes, first pane has expanded: 'true'
       expect(routerPanes).toEqual([
         [{id: 'author'}],
         [
-          {id: 'author123', params: {view: 'editor', inspect: 'changes'}, payload: undefined},
+          {
+            id: 'author123',
+            params: {view: 'editor', inspect: 'changes', expanded: 'true'},
+            payload: undefined,
+          },
           {id: 'author123', params: {view: 'preview', inspect: 'changes'}, payload: undefined},
         ],
       ])
@@ -774,11 +779,11 @@ describe('resolveIntent', () => {
         structureContext: S.context,
       })
 
-      // Should preserve payload in all split panes
+      // Should preserve payload in all split panes, first pane has expanded: 'true'
       expect(routerPanes).toEqual([
         [{id: 'author'}],
         [
-          {id: 'author123', params: {view: 'editor'}, payload: testPayload},
+          {id: 'author123', params: {view: 'editor', expanded: 'true'}, payload: testPayload},
           {id: 'author123', params: {view: 'preview'}, payload: testPayload},
         ],
       ])
