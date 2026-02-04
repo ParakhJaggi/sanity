@@ -113,7 +113,7 @@ export function ArrayOfPrimitivesItem(props: PrimitiveMemberItemProps) {
     (): PrimitiveInputProps['elementProps'] => ({
       'onBlur': handleBlur,
       'onFocus': handleFocus,
-      'id': member.item.id,
+      'id': `sanity-form-${member.item.id}`,
       'ref': focusRef,
       'onChange': handleNativeChange,
       'value': resolveNativeInputValue(member.item.schemaType, member.item.value, localValue),

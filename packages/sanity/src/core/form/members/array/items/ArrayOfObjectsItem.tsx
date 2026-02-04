@@ -306,7 +306,7 @@ export function ArrayOfObjectsItem(props: MemberItemProps) {
     (): ObjectInputProps['elementProps'] => ({
       'onBlur': handleBlur,
       'onFocus': handleFocus,
-      'id': member.item.id,
+      'id': `sanity-form-${member.item.id}`,
       'ref': focusRef,
       'aria-describedby': createDescriptionId(member.item.id, member.item.schemaType.description),
     }),

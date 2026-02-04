@@ -297,7 +297,7 @@ export function ArrayOfPrimitivesField(props: {
     (): ArrayOfObjectsInputProps['elementProps'] => ({
       'onBlur': handleBlur,
       'onFocus': handleFocus,
-      'id': member.field.id,
+      'id': `sanity-form-${member.field.id}`,
       'ref': focusRef,
       'aria-describedby': createDescriptionId(member.field.id, member.field.schemaType.description),
     }),

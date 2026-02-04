@@ -89,7 +89,7 @@ export function PrimitiveField(props: {
     (): PrimitiveInputProps['elementProps'] => ({
       'onBlur': handleBlur,
       'onFocus': handleFocus,
-      'id': member.field.id,
+      'id': `sanity-form-${member.field.id}`,
       'ref': focusRef,
       'onChange': handleNativeChange,
       'value': resolveNativeNumberInputValue(
