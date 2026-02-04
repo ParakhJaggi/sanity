@@ -34,7 +34,7 @@ test.describe('Enhanced Object Dialog - open and close', () => {
 
     await expect(modal).toBeVisible()
     await page
-      .getByTestId(/^field-animals\[_key=="[^"]+"\]\.name$/)
+      .getByTestId(/^sanity-form-field-animals\[_key=="[^"]+"\]\.name$/)
       .getByTestId('string-input')
       .fill('Blue, the whale')
 
@@ -91,7 +91,7 @@ test.describe('Enhanced Object Dialog - when tab focusing on an array item', () 
 
     await expect(modal).toBeVisible()
     const input = page
-      .getByTestId(/^field-animals\[_key=="[^"]+"\]\.name$/)
+      .getByTestId(/^sanity-form-field-animals\[_key=="[^"]+"\]\.name$/)
       .getByTestId('string-input')
     await expect(input).toBeVisible()
     await expect(input).toBeEnabled()
@@ -145,7 +145,9 @@ test.describe('Enhanced Object Dialog - popover dialog', () => {
     page,
   }) => {
     await expect(page.getByTestId('popover-dialog')).toBeVisible()
-    const childrenField = page.getByTestId(/^field-animalsWithPopover\[_key=="[^"]+"\]\.children$/)
+    const childrenField = page.getByTestId(
+      /^sanity-form-field-animalsWithPopover\[_key=="[^"]+"\]\.children$/,
+    )
     await expect(childrenField).toBeVisible()
     await childrenField.getByRole('button', {name: 'Add item'}).click()
     await expect(page.getByTestId('nested-object-dialog')).toBeVisible()

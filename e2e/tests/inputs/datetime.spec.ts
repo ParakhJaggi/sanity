@@ -8,7 +8,7 @@ test(`datetime input shows validation on selecting date from datepicker`, async 
 }) => {
   await createDraftDocument('/content/input-debug;dateTimeValidation')
 
-  await page.waitForSelector(`data-testid=field-requiredDatetime`)
+  await page.waitForSelector(`data-testid=sanity-form-field-requiredDatetime`)
 
   await page
     .getByTestId('sanity-form-field-requiredDatetime')
@@ -33,7 +33,7 @@ test.skip(`datetime input shows validation on entering date in the textfield`, a
 }) => {
   await createDraftDocument('/content/input-debug;dateTimeValidation')
 
-  await page.waitForSelector(`data-testid=field-requiredDatetime`)
+  await page.waitForSelector(`data-testid=sanity-form-field-requiredDatetime`)
 
   await page
     .getByTestId('sanity-form-field-requiredDatetime')

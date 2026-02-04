@@ -30,12 +30,12 @@ test.describe('Array revert changes', () => {
     /** title */
     const itemTitleInput = page
       .getByTestId('nested-object-dialog')
-      .getByTestId(/^field-inlineEditingArray\[_key=="[^"]+"\]\.title$/)
+      .getByTestId(/^sanity-form-field-inlineEditingArray\[_key=="[^"]+"\]\.title$/)
       .getByTestId('string-input')
 
     const itemDescriptionInput = page
       .getByTestId('nested-object-dialog')
-      .getByTestId(/^field-inlineEditingArray\[_key=="[^"]+"\]\.description$/)
+      .getByTestId(/^sanity-form-field-inlineEditingArray\[_key=="[^"]+"\]\.description$/)
       .getByTestId('string-input')
 
     await expect(itemTitleInput).toBeVisible()

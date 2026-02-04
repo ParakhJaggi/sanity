@@ -32,7 +32,7 @@ export default {
     await page.waitForSelector('[data-testid="string-input"]')
 
     const inputTestId =
-      'field-deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.title'
+      'sanity-form-field-deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.deep.title'
 
     if ((await page.getByTestId(inputTestId).count()) === 0) {
       // The fieldsets are collapsed, so we need to open them
@@ -67,7 +67,7 @@ async function openFieldsets(page: Page, depth: number) {
   while (currentPath.length < depth) {
     currentPath.push('deep')
     await page
-      .getByTestId(`field-deep.deep.${currentPath.join('.')}`)
+      .getByTestId(`sanity-form-field-deep.deep.${currentPath.join('.')}`)
       .getByRole('button', {name: 'Deep'})
       .last()
       .click()

@@ -27,7 +27,9 @@ export default {
 
     await page.goto(`${url}/desk/simple;${documentId}`)
 
-    const input = page.locator('[data-testid="field-simple"] [data-testid="string-input"]')
+    const input = page.locator(
+      '[data-testid="sanity-form-field-simple"] [data-testid="string-input"]',
+    )
 
     const samples = await input.evaluate((el: HTMLInputElement) =>
       window.perf.typingTest(el, {samples: 2}),

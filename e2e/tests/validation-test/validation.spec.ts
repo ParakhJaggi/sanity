@@ -104,7 +104,9 @@ test.describe('Validation test', () => {
       await addButton.click({timeout: 15000, force: true})
 
       await expect(page.getByTestId('nested-object-dialog')).toBeVisible()
-      const roomNameInput = page.getByTestId(/field-house\[.*\]\.name/).getByTestId('string-input')
+      const roomNameInput = page
+        .getByTestId(/sanity-form-field-house\[.*\]\.name/)
+        .getByTestId('string-input')
       await expect(roomNameInput).toBeVisible()
       await expect(roomNameInput).toBeEnabled()
       await roomNameInput.fill('Test Room', {timeout: 15000})
@@ -185,7 +187,9 @@ test.describe('Validation test', () => {
       await addButton.click()
 
       await expect(page.getByTestId('nested-object-dialog')).toBeVisible()
-      const roomNameInput = page.getByTestId(/field-house\[.*\]\.name/).getByTestId('string-input')
+      const roomNameInput = page
+        .getByTestId(/sanity-form-field-house\[.*\]\.name/)
+        .getByTestId('string-input')
       await expect(roomNameInput).toBeVisible()
       await expect(roomNameInput).toBeEnabled()
       await roomNameInput.fill('Test Room')

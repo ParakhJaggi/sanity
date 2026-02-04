@@ -8,7 +8,7 @@ test(`date input shows validation on selecting date from datepicker`, async ({
 }) => {
   await createDraftDocument('/content/input-debug;dateValidation')
 
-  await expect(page.getByTestId(`field-requiredDate`)).toBeVisible()
+  await expect(page.getByTestId(`sanity-form-field-requiredDate`)).toBeVisible()
 
   await page.getByTestId('sanity-form-field-requiredDate').getByTestId('select-date-button').click()
   await page.getByTestId('date-input-dialog').getByTestId('date-input').fill('2023')
@@ -29,7 +29,7 @@ test.skip(`date input shows validation on entering date in the text field`, asyn
 }) => {
   await createDraftDocument('/content/input-debug;dateValidation')
 
-  await page.waitForSelector(`data-testid=field-requiredDate`)
+  await page.waitForSelector(`data-testid=sanity-form-field-requiredDate`)
 
   await page
     .getByTestId('sanity-form-field-requiredDate')
@@ -67,7 +67,7 @@ test(`date input shows validation on entering date in the textfield and onBlur`,
 }) => {
   await createDraftDocument('/content/input-debug;dateValidation')
 
-  await page.waitForSelector(`data-testid=field-requiredDate`)
+  await page.waitForSelector(`data-testid=sanity-form-field-requiredDate`)
 
   await page
     .getByTestId('sanity-form-field-requiredDate')
