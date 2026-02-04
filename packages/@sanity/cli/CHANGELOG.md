@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.1](https://github.com/sanity-io/sanity/compare/v5.8.0...v5.8.1) (2026-02-04)
+
+### Bug Fixes
+
+* **deps:** update dependency @sanity/template-validator to ^2.4.5 ([#12076](https://github.com/sanity-io/sanity/issues/12076)) ([6da793e](https://github.com/sanity-io/sanity/commit/6da793e90e421abeea39533dde344295c8b52ebf)) by renovate[bot] (29139614+renovate[bot]@users.noreply.github.com)
+
 ## [5.8.0](https://github.com/sanity-io/sanity/compare/v5.7.0...v5.8.0) (2026-02-03)
 
 ### Features

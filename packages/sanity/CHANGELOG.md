@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.1](https://github.com/sanity-io/sanity/compare/v5.8.0...v5.8.1) (2026-02-04)
+
+### Bug Fixes
+
+* enforce explicit loginMethod configuration ([#12077](https://github.com/sanity-io/sanity/issues/12077)) ([8c4206d](https://github.com/sanity-io/sanity/commit/8c4206d920df8ef785fcfff07621399936251864)) by Rupert Dunk (rupert@rupertdunk.com)
+
 ## [5.8.0](https://github.com/sanity-io/sanity/compare/v5.7.0...v5.8.0) (2026-02-03)
 
 ### Features
