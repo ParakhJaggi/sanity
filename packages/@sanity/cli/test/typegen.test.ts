@@ -248,7 +248,7 @@ describeCliTest('CLI: `sanity typegen`', () => {
       )
 
       test(
-        'sanity typegen gedsanerate: watch mode',
+        'sanity typegen geerate: watch mode',
         withConfig(
           {
             config: workingTypegen,
@@ -256,12 +256,14 @@ describeCliTest('CLI: `sanity typegen`', () => {
           },
           async (configFileName) => {
             const {cmdOptions, cmdArgs} = getParams(configFileName)
-            const filename = `newfile.ts`
-            const fileToAdd = join(studiosPath, studioName, 'src', filename)
+            const filename = `${Math.random().toString(36)}.ts`
+            const unrelatedFilename = `${Math.random().toString(36)}.ts`
+            const watchedFile = join(studiosPath, studioName, 'src', filename)
+            const unrelatedFile = join(studiosPath, studioName, unrelatedFilename)
 
             async function cleanup() {
               try {
-                await unlink(fileToAdd)
+                await Promise.allSettled([unlink(watchedFile), unlink(unrelatedFile)])
               } catch (err) {
                 if (err.code === 'ENOENT') {
                   return
@@ -270,11 +272,9 @@ describeCliTest('CLI: `sanity typegen`', () => {
               }
             }
 
-            const createFile = once(async () => {
-              await writeFile(fileToAdd, '')
-            })
-
-            await cleanup()
+            const createFile = once(() => writeFile(watchedFile, ''))
+            const changeFile = once(() => writeFile(watchedFile, 'apekatt'))
+            const createUnwatchedFile = once(() => writeFile(unrelatedFile, ''))
 
             try {
               const {stderr, stdout} = await runSanityLongRunningCommand(
@@ -282,19 +282,25 @@ describeCliTest('CLI: `sanity typegen`', () => {
                 ['typegen', 'generate', '--watch', ...cmdArgs],
                 cmdOptions,
                 async (output) => {
-                  // assert that we've evaluated three files for queries
-                  expect(output.stderr).toContain('found queries in 1 file after evaluating 1 file')
+                  // assert that it's doing the initial generation
+                  expect(output.stderr).toContain('Successfully generated types')
 
                   // add a ts file to the tmp studio dir
                   await createFile()
-
-                  // expect the console to show message about added file
                   expect(output.stdout).toContain(`add: src/${filename}`)
 
-                  // assert that it evaluated one more file
-                  expect(output.stderr).toContain(
-                    'found queries in 1 file after evaluating 2 files',
-                  )
+                  // change the file, and something that we don't watch
+                  await changeFile()
+                  await createUnwatchedFile()
+                  expect(output.stdout).toContain(`change: src/${filename}`)
+                  expect(output.stdout).not.toContain(`src/${unrelatedFilename}`)
+
+                  // remove file and assert that the unlink is catched
+                  await cleanup()
+                  expect(output.stdout).toContain(`unlink: src/${filename}`)
+
+                  // We should have two generations: initial + quick succession changes being debounced
+                  expect(output.stderr.match(/Successfully generated types/g)?.length).toBe(2)
                 },
               )
             } finally {
