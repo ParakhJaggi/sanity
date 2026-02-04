@@ -181,7 +181,7 @@ export const ObjectField = function ObjectField(props: {
       'onFocus': handleFocus,
       'id': `sanity-form-${member.field.id}`,
       'ref': focusRef,
-      'aria-describedby': createDescriptionId(member.field.id, member.field.schemaType.description),
+      'aria-describedby': createDescriptionId(`sanity-form-${member.field.id}`, member.field.schemaType.description),
     }),
     [handleBlur, handleFocus, member.field.id, member.field.schemaType.description],
   )
@@ -289,7 +289,7 @@ export const ObjectField = function ObjectField(props: {
         onOpen={handleOpen}
         onClose={handleClose}
         schemaType={member.field.schemaType}
-        inputId={member.field.id}
+        inputId={`sanity-form-${member.field.id}`}
         path={member.field.path}
         inputProps={inputProps as ObjectInputProps}
         render={renderField}

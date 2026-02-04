@@ -99,7 +99,7 @@ export function PrimitiveField(props: {
       ),
       'readOnly': Boolean(member.field.readOnly),
       'placeholder': member.field.schemaType.placeholder,
-      'aria-describedby': createDescriptionId(member.field.id, member.field.schemaType.description),
+      'aria-describedby': createDescriptionId(`sanity-form-${member.field.id}`, member.field.schemaType.description),
     }),
     [
       handleBlur,
@@ -163,7 +163,7 @@ export function PrimitiveField(props: {
       changed={member.field.changed}
       description={member.field.schemaType.description}
       index={member.index}
-      inputId={member.field.id}
+      inputId={`sanity-form-${member.field.id}`}
       inputProps={inputProps as any}
       level={member.field.level}
       name={member.name}

@@ -308,7 +308,7 @@ export function ArrayOfObjectsItem(props: MemberItemProps) {
       'onFocus': handleFocus,
       'id': `sanity-form-${member.item.id}`,
       'ref': focusRef,
-      'aria-describedby': createDescriptionId(member.item.id, member.item.schemaType.description),
+      'aria-describedby': createDescriptionId(`sanity-form-${member.item.id}`, member.item.schemaType.description),
     }),
     [handleBlur, handleFocus, member.item.id, member.item.schemaType.description],
   )
@@ -425,7 +425,7 @@ export function ArrayOfObjectsItem(props: MemberItemProps) {
         focused={member.item.focused}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        inputId={member.item.id}
+        inputId={`sanity-form-${member.item.id}`}
         path={member.item.path}
         changed={member.item.changed}
         inputProps={inputProps}

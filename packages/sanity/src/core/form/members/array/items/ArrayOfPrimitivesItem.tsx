@@ -119,7 +119,7 @@ export function ArrayOfPrimitivesItem(props: PrimitiveMemberItemProps) {
       'value': resolveNativeInputValue(member.item.schemaType, member.item.value, localValue),
       'readOnly': Boolean(member.item.readOnly),
       'placeholder': member.item.schemaType.placeholder,
-      'aria-describedby': createDescriptionId(member.item.id, member.item.schemaType.description),
+      'aria-describedby': createDescriptionId(`sanity-form-${member.item.id}`, member.item.schemaType.description),
     }),
     [
       handleBlur,
@@ -214,7 +214,7 @@ export function ArrayOfPrimitivesItem(props: PrimitiveMemberItemProps) {
       focused={member.item.focused}
       onFocus={handleFocus}
       onBlur={handleBlur}
-      inputId={member.item.id}
+      inputId={`sanity-form-${member.item.id}`}
       path={member.item.path}
       render={renderItem}
     >

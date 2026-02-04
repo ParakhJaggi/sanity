@@ -299,7 +299,7 @@ export function ArrayOfPrimitivesField(props: {
       'onFocus': handleFocus,
       'id': `sanity-form-${member.field.id}`,
       'ref': focusRef,
-      'aria-describedby': createDescriptionId(member.field.id, member.field.schemaType.description),
+      'aria-describedby': createDescriptionId(`sanity-form-${member.field.id}`, member.field.schemaType.description),
     }),
     [handleBlur, handleFocus, member.field.id, member.field.schemaType.description],
   )
@@ -427,7 +427,7 @@ export function ArrayOfPrimitivesField(props: {
         changed={member.field.changed}
         onCollapse={handleCollapse}
         schemaType={member.field.schemaType}
-        inputId={member.field.id}
+        inputId={`sanity-form-${member.field.id}`}
         path={member.field.path}
         presence={member.field.presence}
         validation={member.field.validation}
