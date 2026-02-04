@@ -113,7 +113,7 @@ function PrimitiveField(field: FieldProps) {
         focused={focused}
         path={field.path}
       >
-        <div data-testid={`field-${field.inputId}`}>
+        <div data-testid={`field-${field.inputId.replace('sanity-form-', '')}`}>
           <FormField
             __internal_slot={field.__internal_slot}
             __internal_comments={field.__internal_comments}
@@ -185,7 +185,7 @@ function ObjectOrArrayField(field: ObjectFieldProps | ArrayFieldProps) {
           __unstable_presence={field.presence}
           collapsed={field.collapsed}
           collapsible={field.collapsible}
-          data-testid={`field-${field.inputId}`}
+          data-testid={`field-${field.inputId.replace('sanity-form-', '')}`}
           description={field.description}
           level={field.level}
           onCollapse={field.onCollapse}
